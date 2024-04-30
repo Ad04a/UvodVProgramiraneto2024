@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+int b;
 int  b= 10;
 
 struct car{

@@ -10,7 +10,7 @@ struct Book{
 
 void func(int b)
 {
-    static int c=0;
+    static int c;
     c+=b;
     printf("%d\n", c);
 }
