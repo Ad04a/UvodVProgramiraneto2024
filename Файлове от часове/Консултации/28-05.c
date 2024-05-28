@@ -1,11 +1,13 @@
 #include <stdio.h>
 #include <limits.h>
 
-//0110 0001
-int main_complex()
+//1...01111111   -128
+//1...10000000   -127
+//1.1010000000
+int main()
 {
-    //unsigned int max = UINT_MAX; 
-    unsigned int max = 4294967137; 
+    unsigned int max = UINT_MAX-127-256; 
+    //unsigned int max = 4294967137; 
     unsigned char* ucharptr = &max;
     char* charptr = &max;
     unsigned int* intptr = &max;
@@ -16,14 +18,16 @@ int main_complex()
     printf("%d - %d\n", sizeof(char), sizeof(unsigned char));
     printf("%u - %p\n\n", max, &max);
 
-    printf("%u - %p\n", *charptr, charptr);
+    char trough  = *((char*)intptr);
+
+    printf("%d - %p\n", *charptr, charptr);
     printf("%u - %p\n", *ucharptr, ucharptr);
-    printf("%u - %p\n", *((char*)intptr), ((char*)intptr));
+    printf("%d - %p\n", trough, ((char*)intptr));
     printf("%u - %p\n", *((unsigned char*)intptr), ((unsigned char*)intptr));
     printf("%u - %p\n\n", *intptr, intptr);
     
     printf("%u - %p\n", *(intptr+1), (intptr+1));
-    printf("%u - %p\n", *(((char*)intptr)+1), (((char*)intptr))+1);
+    printf("%d - %p\n", *(((char*)intptr)+1), (((char*)intptr))+1);
 
 
     char* str = "fortnite";
@@ -54,7 +58,7 @@ void printList(int arr[])
 }
 
 
-int main()
+int main_konsult()
 {
     int arr[10] = {0,0,0,0,0,0,0,0,0,0};
     int counter = 0;
@@ -71,5 +75,16 @@ int main()
     }
     printf("list is full: ");
     printList(arr);
+    printf("%x", 12);
+
+    /*%d - decimal
+    %x - hex
+    %o - octagonal
+    %u - unsigned
+    %c - char
+    %s - string
+    %f - float
+    %lf/d - long float/int
+    %p - adress*/
 }
 
